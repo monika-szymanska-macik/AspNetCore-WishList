@@ -22,9 +22,17 @@ namespace WishList.Controllers
             var model =_context.Items.ToList();
             return View("Index", model);
         }
-        public IActionResult Create(HttpGetAttribute httpGet)
+        [HttpGet]
+        public IActionResult Create()
         {
-            return View("Create");
+             return View("Create");
+        }
+        [HttpPost]
+        public IActionResult Create(Models.Item item)
+        {
+            _context.Items.Add(item);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
