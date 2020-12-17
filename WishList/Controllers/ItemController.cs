@@ -34,5 +34,11 @@ namespace WishList.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+        public IActionResult Delete(int Id)
+        {
+            _context.Remove(Id);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
